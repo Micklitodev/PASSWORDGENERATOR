@@ -69,12 +69,12 @@ function specialCharEvent() {
 }
 
 function digitLengthEvent() {
-  let digit = prompt("How long do would you like your password to be?", "8-20");
-  if (digit != null && digit >= 8 && digit <= 20) {
+  let digit = prompt("How long do would you like your password to be?", "8-128");
+  if (digit != null && digit >= 8 && digit <= 128) {
     choices.digitQuantity = digit;
     generatePassword();
   } else {
-    alert("Invalid input, please choose a number between 8 - 20");
+    alert("Invalid input, please choose a number between 8 - 128");
     digitLengthEvent();
   }
 }
@@ -83,16 +83,71 @@ function digitLengthEvent() {
   function generatePassword() {
     let password = '';
     let nums = '0123456789';
+    let letters = 'abcdefghijklmnopqrstuvwxyz';
+    let upper = letters.toUpperCase();
+    let symbols = '!#$%&*+,-./:;<=>?@\^_{|}~'
+
+    
+
   
     if (choices.needNum === 'y') {
       for (let i = 0; i < choices.digitQuantity; i++) {
-        password += nums[Math.floor(Math.random() * nums.length)];
+        password += nums[Math.floor(Math.random() * 10)];
+      }
+    } 
+    if (choices.needLetter === 'y') {
+      for (let i = 0; i < choices.digitQuantity; i++) {
+       password += letters[Math.floor(Math.random() * letters.length)]
       }
     }
-    
+    if (choices.needUpper === 'y') {
+      for( let i = 0 ; i < choices.digitQuantity; i++) {
+        password += upper[Math.floor(Math.random() * letters.length)]
+      }
+    }
+    if (choices.needSpecial === 'y') {
+      for(let i = 0; i < choices.digitQuantity; i++ ) {
+        password += symbols[Math.floor(Math.random() * symbols.length)]
+    }
+  } 
+
     return password;
   }
   
 
 
 
+// ~	Tilde.
+// `	Acute, backquote, backtick, grave, grave accent, left quote, open quote, or a push.
+// !	Exclamation mark, exclamation point, or bang.
+// @	Ampersat, arobase, asperand, at, or at symbol.
+// #	Octothorpe, number, pound, sharp, or hash.
+// $	Dollar sign or generic currency.
+// %	Percent.
+// ^	Caret or circumflex.
+// &	Ampersand, epershand, or and symbol.
+// *	Asterisk, mathematical multiplication symbol, and sometimes called a star.
+// (	Open or left parenthesis.
+// )	Close or right parenthesis.
+// -	
+// _	
+// +	
+// =	
+// {	
+// }	
+// [	
+// ]
+// |
+// \	
+// /	
+// :	
+// ;	
+// "	
+// '	
+// <
+// >
+// ,	
+// .	
+// ?
+
+ 
